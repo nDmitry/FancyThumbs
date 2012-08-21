@@ -1,0 +1,17 @@
+/* FancyThumbs MediaWiki extension   *
+ * Version: 1.1 (Tue, 21 Aug 2012)   *
+ * Author: weiss, http://ndmitry.ru/ *
+ * E-mail: dima.nikitenko@gmail.com  *
+ * Testing only on MediaWiki 1.19.1! */
+
+Example:
+    http://stalkerworld.ru/wiki/
+
+Installation:
+    1. Download the files from here: https://github.com/nDmitry/FancyThumbs/zipball/master
+    2. Create a directory FancyThumbs in your $IP/extensions directory
+    3. Extract the files to this $IP/extensions/FancyThumbs directory
+    4. Add to the end of LocalSettings.php:
+        require_once("$IP/extensions/FancyThumbs/FancyThumbs.php");
+    
+    Installation can now be verified through Special:Version on your wiki.

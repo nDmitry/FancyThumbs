@@ -5,7 +5,7 @@
  * version: 1.1 (Tue, 21 Aug 2012)
  * Author: weiss, http://ndmitry.ru/
  * E-mail: dima.nikitenko@gmail.com
- * Testing only on MediaWiki 1.19.1
+ * Tested only on MediaWiki 1.19.1
  */
 
 /* !
@@ -26,7 +26,7 @@ $wgExtensionCredits['other'][] = array(
     'url' => 'https://github.com/nDmitry/FancyThumbs',
     'author' => '[http://ndmitry.ru weiss]',
     'description' => 'Displaying thumbs and their descriptions using jQuery-plugin fancyBox',
-    'version' => '1.0'
+    'version' => '1.1'
 );
 
 $wgResourceModules['ext.FancyThumbs'] = array(
