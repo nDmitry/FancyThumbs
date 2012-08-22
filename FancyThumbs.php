@@ -43,8 +43,22 @@ $wgHooks['BeforePageDisplay'][] = 'FancyThumbs::beforePageDisplay';
 
 class FancyThumbs {
 
-    public static function beforePageDisplay($out) {
-        $out->addModules('ext.FancyThumbs');
+    public static function beforePageDisplay($out, $context) {
+        global $wgRequest, $wgTitle, $wgContLang;
+        
+        $unnecessary = array(
+            $wgContLang->getNsText(NS_MEDIA),
+            $wgContLang->getNsText(NS_SPECIAL),
+            $wgContLang->getNsText(NS_FILE),
+            $wgContLang->getNsText(NS_MEDIAWIKI),
+            $wgContLang->getNsText(NS_TEMPLATE)
+        );
+        
+        // @TODO RequestContext
+        if(!in_array($wgRequest->getText('action'),array('edit', 'create', 'history', 'delete', 'purge')) && !in_array($wgTitle->getNsText(), $unnecessary)) {
+            $out->addModules('ext.FancyThumbs');
+        }
+        
         return true;
     }
 
