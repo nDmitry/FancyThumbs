@@ -1,9 +1,8 @@
-// Rewrite the hrefs, add 'rel' and 'title' attrs to links, fancyBox init.
+// fancyBox init.
 
 jQuery(document).ready(function ($) {
     $('a.image').each(function() {
         var img_split1 = $(this).children().first().attr('src').split('/thumb');
-        // if this a full image
         if(img_split1[1] == null) {
             img_split1[1] = img_split1[0];
             img_split1[0] = '';
@@ -13,6 +12,7 @@ jQuery(document).ready(function ($) {
         var img_src = img_split1[0]+img_split2[0]+'.'+img_type;
         var img_src = img_src.replace('..', '.');
         var descr = $(this).next('div.thumbcaption').text();
+        
         $(this).attr('href', img_src);
         $(this).attr('rel', 'group');
         if(descr) {
@@ -30,6 +30,23 @@ jQuery(document).ready(function ($) {
         preload: 2, 
         closeEffect: 'elastic', 
         nextEffect: 'fade', 
-        prevEffect: 'fade'
+        prevEffect: 'fade',
+        beforeLoad: function() {
+            link = $(this.element).attr('href');
+            filename = mw.msg('nstab-image') + ':' + link.substr(link.lastIndexOf('/')+1);
+        },
+        beforeShow: function () {
+            if (filename) {
+                if(this.title) {
+                    this.title += '<br>';
+                }
+                this.title += '<a href="' + filename + '">'+ filename +'</a>';
+            }
+        },
+        helpers: {
+            title: {
+                type: 'inside'
+            }
+        }
     });
 });

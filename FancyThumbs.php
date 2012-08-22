@@ -2,7 +2,7 @@
 
 /* !
  * FancyThumbs MediaWiki extension
- * version: 1.1 (Tue, 21 Aug 2012)
+ * version: 1.2 (Tue, 21 Aug 2012)
  * Author: weiss, http://ndmitry.ru/
  * E-mail: dima.nikitenko@gmail.com
  * Tested only on MediaWiki 1.19.1
@@ -26,14 +26,17 @@ $wgExtensionCredits['other'][] = array(
     'url' => 'https://github.com/nDmitry/FancyThumbs',
     'author' => '[http://ndmitry.ru weiss]',
     'description' => 'Displaying thumbs and their descriptions using jQuery-plugin fancyBox',
-    'version' => '1.1'
+    'version' => '1.2'
 );
 
 $wgResourceModules['ext.FancyThumbs'] = array(
     'scripts' => array('fancybox/jquery.fancybox.pack.js', 'js/ext.FancyThumbs.init.js'),
     'styles' => 'fancybox/jquery.fancybox.css',
     'localBasePath' => dirname(__FILE__),
-    'remoteExtPath' => 'FancyThumbs'
+    'remoteExtPath' => 'FancyThumbs',
+    'messages' => array(
+        'nstab-image'
+    ),
 );
 
 $wgHooks['BeforePageDisplay'][] = 'FancyThumbs::beforePageDisplay';
